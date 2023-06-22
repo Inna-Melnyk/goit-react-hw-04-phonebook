@@ -30,20 +30,20 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
-    setContacts(prevState => {
-      const contactNames = prevState.map(contact => contact.name.toLowerCase());
+    setContacts(prevContacts => {
+      const contactNames = prevContacts.map(contact => contact.name.toLowerCase());
       if (contactNames.includes(newContact.name.toLowerCase())) {
         alert(`${newContact.name} is already in contacts!`);
-        return [...prevState];
+        return [...prevContacts];
       } else {
-        return [newContact, ...prevState];
+        return [newContact, ...prevContacts];
       }
     });
   };
 
   const deleteContact = contactId => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== contactId)
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== contactId)
     );
   };
 
